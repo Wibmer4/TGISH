@@ -49,11 +49,11 @@ const HospitalBranding = () => {
       <div className="text-xs text-muted-foreground space-y-1">
         <div className="flex items-center justify-center space-x-2">
           <Icon name="Phone" size={12} />
-          <span>+33 1 42 34 56 78</span>
+          <span>+212 631 005 004</span>
         </div>
         <div className="flex items-center justify-center space-x-2">
           <Icon name="Mail" size={12} />
-          <span>cssd@hopital-central.fr</span>
+          <span>cssd@hopital-central.ma</span>
         </div>
       </div>
     </div>

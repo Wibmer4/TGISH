@@ -54,15 +54,17 @@ export const frTranslations = {
   // Dashboard Page
   dashboard: {
     title: 'Tableau de bord CSSD',
-    subtitle: 'Département Central de Stérilisation - Surveillance des processus en temps réel',
-    liveUpdates: 'Mises à jour en direct',
-    activeAlerts: 'Alertes actives',
-    quickActions: 'Actions rapides',
-    activeWorkflows: 'Flux de travail actifs',
-    equipmentStatus: 'État de l\'équipement',
-    validationQueue: 'File d\'attente de validation',
-    processNavigation: 'Navigation des processus',
-    newWorkflow: 'Nouveau flux',
+    quickActions: {
+      title: 'Actions Rapides',
+      subtitle: 'Département Central de Stérilisation - Surveillance des processus en temps réel',
+      liveUpdates: 'Mises à jour en direct',
+      activeAlerts: 'Alertes actives',
+      activeWorkflows: 'Flux de travail actifs',
+      equipmentStatus: 'État de l\'équipement',
+      validationQueue: 'File d\'attente de validation',
+      processNavigation: 'Navigation des processus',
+      newWorkflow: 'Nouveau flux',
+    },
 
     // Statistics
     stats: {
