@@ -52,6 +52,44 @@
     --color-destructive-foreground: #FFFFFF; /* white */
   }
 
+  /* Dark theme overrides (applied when .dark class is on <html> or <body>) */
+  .dark {
+    --color-background: #0B1220; /* very dark slate */
+    --color-foreground: #E6EEF8; /* light text */
+    --color-border: #1F2937; /* dark border */
+    --color-input: #0F1724;
+    --color-ring: #3B82F6;
+
+    --color-card: #081023;
+    --color-card-foreground: #E6EEF8;
+
+    --color-popover: #071221;
+    --color-popover-foreground: #E6EEF8;
+
+    --color-muted: #071724;
+    --color-muted-foreground: #94A3B8;
+
+    --color-primary: #60A5FA; /* lighter blue for contrast */
+    --color-primary-foreground: #06213A;
+
+    --color-secondary: #475569;
+    --color-secondary-foreground: #E6EEF8;
+
+    --color-accent: #10B981;
+    --color-accent-foreground: #062213;
+
+    --color-success: #34D399;
+    --color-success-foreground: #062213;
+
+    --color-warning: #FBBF24;
+    --color-warning-foreground: #062213;
+
+    --color-error: #FB7185;
+    --color-error-foreground: #1F1020;
+    --color-destructive: #F43F5E;
+    --color-destructive-foreground: #FFFFFF;
+  }
+
   * {
     @apply border-border;
   }
@@ -59,6 +97,7 @@
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
+    transition: background-color 200ms ease, color 200ms ease;
   }
 }
 

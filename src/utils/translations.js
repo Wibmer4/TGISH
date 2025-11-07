@@ -50,6 +50,12 @@ export const frTranslations = {
     session: 'Session : 08:30 - 16:30',
     shift: 'Équipe A'
   },
+  // Top-level navigation labels (additional)
+  nav: {
+    inventory: 'Gestion des Stocks Stériles',
+    equipment: 'Gestion des Équipements',
+    compliance: 'Rapports de Conformité'
+  },
 
   // Dashboard Page
   dashboard: {

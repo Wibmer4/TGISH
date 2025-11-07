@@ -43,6 +43,25 @@ const Header = ({ className = '' }) => {
       icon: 'Search',
       description: t('header.traceabilityDesc')
     }
+    ,
+    {
+      label: t('nav.inventory'),
+      path: '/sterile-inventory-management',
+      icon: 'Box',
+      description: t('nav.inventory')
+    },
+    {
+      label: t('nav.equipment'),
+      path: '/equipment-management',
+      icon: 'Settings',
+      description: t('nav.equipment')
+    },
+    {
+      label: t('nav.compliance'),
+      path: '/compliance-reporting',
+      icon: 'ShieldCheck',
+      description: t('nav.compliance')
+    }
   ];
 
   const secondaryNavItems = [
