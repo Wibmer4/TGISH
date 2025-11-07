@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Header from '../../components/ui/Header';
 import Button from '../../components/ui/Button';
 import Icon from '../../components/AppIcon';
 
@@ -27,7 +26,6 @@ const EquipmentManagement = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <main className="pt-32 pb-8">
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex items-center justify-between mb-6">

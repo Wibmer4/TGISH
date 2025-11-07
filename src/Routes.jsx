@@ -12,6 +12,7 @@ import PatientTraceabilitySystem from './pages/patient-traceability-system';
 import SterileInventoryManagement from './pages/sterile-inventory-management';
 import EquipmentManagement from './pages/equipment-management';
 import ComplianceReporting from './pages/compliance-reporting';
+import Layout from './components/ui/Layout';
 
 const Routes = () => {
   return (
@@ -19,17 +20,22 @@ const Routes = () => {
       <ErrorBoundary>
       <ScrollToTop />
       <RouterRoutes>
-        {/* Define your route here */}
+        {/* Public / standalone routes */}
         <Route path="/" element={<StaffLogin />} />
-        <Route path="/cssd-dashboard" element={<CSSDDashboard />} />
         <Route path="/staff-login" element={<StaffLogin />} />
-        <Route path="/quality-control-validation" element={<QualityControlValidation />} />
-        <Route path="/pre-disinfection-workflow" element={<PreDisinfectionWorkflow />} />
-        <Route path="/sterilization-cycle-management" element={<SterilizationCycleManagement />} />
-  <Route path="/sterile-inventory-management" element={<SterileInventoryManagement />} />
-  <Route path="/equipment-management" element={<EquipmentManagement />} />
-  <Route path="/compliance-reporting" element={<ComplianceReporting />} />
-        <Route path="/patient-traceability-system" element={<PatientTraceabilitySystem />} />
+
+        {/* App routes rendered inside the Layout (Header + Sidebar) */}
+        <Route element={<Layout />}>
+          <Route path="/cssd-dashboard" element={<CSSDDashboard />} />
+          <Route path="/quality-control-validation" element={<QualityControlValidation />} />
+          <Route path="/pre-disinfection-workflow" element={<PreDisinfectionWorkflow />} />
+          <Route path="/sterilization-cycle-management" element={<SterilizationCycleManagement />} />
+          <Route path="/sterile-inventory-management" element={<SterileInventoryManagement />} />
+          <Route path="/equipment-management" element={<EquipmentManagement />} />
+          <Route path="/compliance-reporting" element={<ComplianceReporting />} />
+          <Route path="/patient-traceability-system" element={<PatientTraceabilitySystem />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>

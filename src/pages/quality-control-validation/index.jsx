@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/ui/Header';
+// Header provided by Layout
 import ValidationQueue from './components/ValidationQueue';
 import CycleDocumentation from './components/CycleDocumentation';
 import ValidationInterface from './components/ValidationInterface';
@@ -211,7 +211,7 @@ const QualityControlValidation = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
+      
       {/* Main Content */}
       <main className="pt-32 pb-8">
         <div className="max-w-7xl mx-auto px-6">

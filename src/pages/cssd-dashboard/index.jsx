@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/ui/Header';
+// Header provided by Layout
 import WorkflowCard from './components/WorkflowCard';
 import EquipmentStatusCard from './components/EquipmentStatusCard';
 import QuickActionButton from './components/QuickActionButton';
@@ -307,7 +307,6 @@ const CSSDDashboard = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       <main className="pt-32 pb-8">
         <div className="max-w-7xl mx-auto px-6">
           {/* Dashboard Header */}

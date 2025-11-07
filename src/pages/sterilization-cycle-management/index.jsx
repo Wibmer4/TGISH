@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/ui/Header';
+// Header provided by Layout
 import AutoclaveLoadingPanel from './components/AutoclaveLoadingPanel';
 import PrerequisiteValidationPanel from './components/PrerequisiteValidationPanel';
 import CycleControlPanel from './components/CycleControlPanel';
@@ -211,7 +211,6 @@ const SterilizationCycleManagement = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       
       <main className="pt-32 pb-8 px-6">
         <div className="max-w-7xl mx-auto space-y-8">

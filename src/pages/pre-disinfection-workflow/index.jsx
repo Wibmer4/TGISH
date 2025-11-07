@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Header from '../../components/ui/Header';
+// Header provided by Layout
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import BarcodeScanner from './components/BarcodeScanner';
@@ -172,7 +172,6 @@ const PreDisinfectionWorkflow = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
       {/* Main Content */}
       <main className="pt-32 pb-8">
         <div className="max-w-7xl mx-auto px-6">

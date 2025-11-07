@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Header from '../../components/ui/Header';
+// Header is provided by Layout
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
 import PatientCaseRegistration from './components/PatientCaseRegistration';
@@ -129,8 +129,7 @@ const PatientTraceabilitySystem = () => {
 
   return (
     <div className="min-h-screen bg-background">
-      <Header />
-      <main className="pt-32 pb-8">
+  <main className="pt-32 pb-8">
         <div className="max-w-7xl mx-auto px-6">
           {/* Page Header */}
           <div className="mb-8">
