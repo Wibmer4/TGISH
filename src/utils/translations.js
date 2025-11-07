@@ -263,6 +263,140 @@ export const frTranslations = {
     enterValue: 'Saisissez une valeur...',
     searchPlaceholder: 'Rechercher...'
   }
+  ,
+  // Patient Traceability
+  patientTraceability: {
+    title: 'Système de Traçabilité Patient',
+    subtitle: 'Sécurité patient et gestion de la traçabilité des paquets stériles',
+    tabs: {
+      registration: 'Enregistrement Patient',
+      search: 'Recherche de Traçabilité',
+      reports: 'Rapports',
+      alerts: 'Alertes'
+    },
+    stats: {
+      activePatients: 'Patients actifs',
+      tracedProcedures: 'Procédures tracées',
+      activeAlerts: 'Alertes actives',
+      complianceRate: 'Taux de conformité'
+    },
+    quickActions: {
+      emergencyScan: 'Scan d\'urgence',
+      reportIssue: 'Signaler un problème',
+      generateReport: 'Générer rapport',
+      contactSupport: 'Contacter le support'
+    },
+    export: {
+      exportData: 'Exporter les données'
+    },
+    footer: {
+      version: 'Version',
+      lastUpdated: 'Dernière mise à jour'
+    }
+  },
+
+  // Sterile Inventory
+  inventory: {
+    title: 'Gestion des Stocks Stériles',
+    subtitle: 'Surveillance des niveaux, péremptions et mouvements',
+    details: 'Détails du Stock',
+    movementLog: 'Journal des mouvements',
+    trackingLog: 'Journal de suivi',
+    issue: 'Émettre',
+    flag: 'Marquer',
+    addStock: 'Ajouter Stock',
+    noMovements: 'Aucun mouvement enregistré',
+    noTracking: 'Aucun lot marqué'
+  },
+
+  // Generic UI and QC strings
+  ui: {
+    noLoadSelected: 'Aucune charge sélectionnée',
+    loadSummary: 'Résumé de la charge',
+    selectLoad: 'Sélectionnez une charge pour commencer le processus de validation',
+    inspectorComments: 'Commentaires de l\'inspecteur',
+    pass: 'Réussi',
+    fail: 'Échec',
+    rejectLoad: 'Rejeter la charge',
+    reject: 'Rejeter',
+    approveAndRelease: 'Approuver et libérer',
+    saveProgress: 'Enregistrer la progression',
+    cancel: 'Annuler',
+    confirmRejection: 'Confirmer le rejet',
+    generatingReport: 'Génération du rapport...',
+    generateReports: 'Générer des rapports',
+    sessionLabel: 'Session :'
+  },
+
+  qualityControl: {
+    title: 'Contrôle Qualité - Validation',
+    subtitle: 'Examiner, approuver et libérer les charges stérilisées',
+    validationRequired: 'Validation requise',
+    inspectionChecklist: 'Liste de contrôle d\'inspection',
+    loadLabels: {
+      autoclave: 'Autoclave :',
+      cycle: 'Cycle :',
+      items: 'Articles :',
+      completed: 'Terminé :'
+    },
+    inspectionItems: {
+      packagingIntegrity: {
+        label: 'Intégrité de l\'emballage',
+        description: 'Vérifier les déchirures, perforations ou joints compromis'
+      },
+      labelQuality: {
+        label: 'Qualité de l\'étiquette',
+        description: 'Vérifier la lisibilité du code-barres et la qualité d\'impression'
+      },
+      sterileBarrier: {
+        label: 'Barrière stérile',
+        description: 'Confirmer l\'intégrité du système de barrière stérile'
+      },
+      visualInspection: {
+        label: 'Inspection visuelle',
+        description: 'Apparence générale et évaluation de propreté'
+      }
+    },
+    tabs: {
+      parameters: 'Paramètres du cycle',
+      indicators: 'Indicateurs',
+      charts: 'Température/Pression',
+      photos: 'Preuves visuelles'
+    },
+    parameterLabels: {
+      temperature: 'Température',
+      pressure: 'Pression',
+      holdTime: 'Temps de maintien'
+    },
+    cyclePhases: 'Phases du cycle',
+    physicalIndicatorsLabel: 'Indicateurs physiques',
+    chemicalIndicatorsLabel: 'Indicateurs chimiques',
+    biologicalIndicatorsLabel: 'Indicateurs biologiques',
+    tempPressureCurves: 'Courbes Température/Pression',
+  cycleDocumentation: 'Documentation du cycle',
+    exportPdf: 'Exporter en PDF',
+    photoCaptured: 'Capturé :',
+    photoInspector: 'Inspecteur :',
+  rejectionReasonLabel: 'Raison du rejet *',
+  commentsPlaceholder: 'Saisissez des notes d\'inspection détaillées...',
+  commentsRequired: 'Requis : Fournir des commentaires détaillés sur l\'inspection',
+  rejectionPlaceholder: 'Fournissez une explication détaillée du rejet...',
+  rejectionDescription: 'Requis : Expliquez les problèmes spécifiques trouvés',
+    rejectionReasons: [
+      'Intégrité de l\'emballage compromise',
+      'Qualité de l\'étiquette insuffisante',
+      'Défaillance de la barrière stérile',
+      'Échec indicateur - Physique',
+      'Échec indicateur - Chimique',
+      'Échec indicateur - Biologique',
+      'Écart de température',
+      'Écart de pression',
+      'Écart de durée du cycle',
+      'Dysfonctionnement de l\'équipement',
+      'Autre (préciser dans les commentaires)'
+    ],
+    validationSystemOnline: 'Système de validation en ligne'
+  }
 };
 
 // Language detection and management

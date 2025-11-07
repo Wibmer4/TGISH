@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 // Header provided by Layout
+import { useTranslation } from '../../utils/translations';
 import Button from '../../components/ui/Button';
 import Icon from '../../components/AppIcon';
 
@@ -10,6 +11,7 @@ const mockStock = [
 ];
 
 const SterileInventoryManagement = () => {
+  const { t } = useTranslation();
   const [stock] = useState(mockStock);
   const [movementLog, setMovementLog] = useState([]);
   const [trackingLog, setTrackingLog] = useState([]);
@@ -44,8 +46,8 @@ const SterileInventoryManagement = () => {
                 <Icon name="Box" size={24} color="white" />
               </div>
               <div>
-                <h1 className="text-2xl font-bold text-foreground">Gestion des Stocks Stériles</h1>
-                <p className="text-muted-foreground">Surveillance des niveaux de stock, péremption et mouvements</p>
+                <h1 className="text-2xl font-bold text-foreground">{t('inventory.title')}</h1>
+                <p className="text-muted-foreground">{t('inventory.subtitle')}</p>
               </div>
             </div>
             <div>
@@ -54,8 +56,8 @@ const SterileInventoryManagement = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <h3 className="font-semibold mb-4">Détails du Stock</h3>
+              <div className="bg-card border border-border rounded-lg p-6">
+                <h3 className="font-semibold mb-4">{t('inventory.details')}</h3>
               <div className="space-y-3">
                 {stock?.map(item => (
                   <div key={item.batchId} className="flex items-center justify-between p-3 border rounded-lg">
@@ -66,8 +68,8 @@ const SterileInventoryManagement = () => {
                     <div className="text-right">
                       <div className={`text-sm ${getExpiryClass(item.expirationDate)}`}>Exp: {item.expirationDate}</div>
                       <div className="mt-2 flex space-x-2">
-                        <Button variant="outline" size="sm" onClick={() => recordMovement(item.batchId, 'issue')}>Issue</Button>
-                        <Button variant="ghost" size="sm" onClick={() => flagBatch(item.batchId, 'Re-Sterilize')}>Flag</Button>
+                        <Button variant="outline" size="sm" onClick={() => recordMovement(item.batchId, 'issue')}>{t('inventory.issue')}</Button>
+                        <Button variant="ghost" size="sm" onClick={() => flagBatch(item.batchId, 'Re-Sterilize')}>{t('inventory.flag')}</Button>
                       </div>
                     </div>
                   </div>
@@ -77,9 +79,9 @@ const SterileInventoryManagement = () => {
 
             <div className="space-y-4">
               <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="font-semibold mb-4">Movement Log</h3>
+                <h3 className="font-semibold mb-4">{t('inventory.movementLog')}</h3>
                 <div className="text-sm text-muted-foreground max-h-48 overflow-y-auto">
-                  {movementLog?.length === 0 && <div>Aucun mouvement enregistré</div>}
+                  {movementLog?.length === 0 && <div>{t('inventory.noMovements')}</div>}
                   {movementLog?.map(m => (
                     <div key={m.id} className="py-2 border-b last:border-b-0">
                       <div className="font-medium">{m.batchId} • {m.action}</div>
@@ -90,9 +92,9 @@ const SterileInventoryManagement = () => {
               </div>
 
               <div className="bg-card border border-border rounded-lg p-6">
-                <h3 className="font-semibold mb-4">Tracking Log (Re-Sterilize / Destruction)</h3>
+                <h3 className="font-semibold mb-4">{t('inventory.trackingLog')} (Re-Sterilize / Destruction)</h3>
                 <div className="text-sm text-muted-foreground max-h-48 overflow-y-auto">
-                  {trackingLog?.length === 0 && <div>Aucun lot marqué</div>}
+                  {trackingLog?.length === 0 && <div>{t('inventory.noTracking')}</div>}
                   {trackingLog?.map(t => (
                     <div key={t.id} className="py-2 border-b last:border-b-0">
                       <div className="font-medium">{t.batchId} • {t.disposition}</div>

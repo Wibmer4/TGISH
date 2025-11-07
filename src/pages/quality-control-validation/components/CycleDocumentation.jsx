@@ -2,26 +2,28 @@ import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Image from '../../../components/AppImage';
 import Button from '../../../components/ui/Button';
+import { useTranslation } from '../../../utils/translations';
 
 const CycleDocumentation = ({ validation }) => {
   const [activeTab, setActiveTab] = useState('parameters');
   const [expandedSection, setExpandedSection] = useState(null);
+  const { t } = useTranslation();
 
   if (!validation) {
     return (
       <div className="bg-card border border-border rounded-lg p-8 text-center">
         <Icon name="FileText" size={48} className="text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-foreground mb-2">No Load Selected</h3>
-        <p className="text-muted-foreground">Select a load from the validation queue to view documentation</p>
+        <h3 className="text-lg font-medium text-foreground mb-2">{t('ui.noLoadSelected')}</h3>
+        <p className="text-muted-foreground">{t('ui.selectLoad')}</p>
       </div>
     );
   }
 
   const tabs = [
-    { id: 'parameters', label: 'Cycle Parameters', icon: 'Settings' },
-    { id: 'indicators', label: 'Indicators', icon: 'TestTube' },
-    { id: 'charts', label: 'Temperature/Pressure', icon: 'TrendingUp' },
-    { id: 'photos', label: 'Visual Evidence', icon: 'Camera' }
+    { id: 'parameters', label: t('qualityControl.tabs.parameters'), icon: 'Settings' },
+    { id: 'indicators', label: t('qualityControl.tabs.indicators'), icon: 'TestTube' },
+    { id: 'charts', label: t('qualityControl.tabs.charts'), icon: 'TrendingUp' },
+    { id: 'photos', label: t('qualityControl.tabs.photos'), icon: 'Camera' }
   ];
 
   const toggleSection = (section) => {
@@ -34,7 +36,7 @@ const CycleDocumentation = ({ validation }) => {
         <div className="bg-muted/30 p-4 rounded-lg">
           <div className="flex items-center space-x-2 mb-2">
             <Icon name="Thermometer" size={16} className="text-primary" />
-            <span className="text-sm font-medium text-foreground">Temperature</span>
+            <span className="text-sm font-medium text-foreground">{t('qualityControl.parameterLabels.temperature')}</span>
           </div>
           <div className="text-2xl font-bold text-foreground">{validation?.cycleData?.temperature}°C</div>
           <div className="text-xs text-muted-foreground">Target: 134°C</div>
@@ -43,7 +45,7 @@ const CycleDocumentation = ({ validation }) => {
         <div className="bg-muted/30 p-4 rounded-lg">
           <div className="flex items-center space-x-2 mb-2">
             <Icon name="Gauge" size={16} className="text-primary" />
-            <span className="text-sm font-medium text-foreground">Pressure</span>
+            <span className="text-sm font-medium text-foreground">{t('qualityControl.parameterLabels.pressure')}</span>
           </div>
           <div className="text-2xl font-bold text-foreground">{validation?.cycleData?.pressure} bar</div>
           <div className="text-xs text-muted-foreground">Target: 2.1 bar</div>
@@ -52,7 +54,7 @@ const CycleDocumentation = ({ validation }) => {
         <div className="bg-muted/30 p-4 rounded-lg">
           <div className="flex items-center space-x-2 mb-2">
             <Icon name="Clock" size={16} className="text-primary" />
-            <span className="text-sm font-medium text-foreground">Hold Time</span>
+            <span className="text-sm font-medium text-foreground">{t('qualityControl.parameterLabels.holdTime')}</span>
           </div>
           <div className="text-2xl font-bold text-foreground">{validation?.cycleData?.holdTime} min</div>
           <div className="text-xs text-muted-foreground">Target: 3 min</div>
@@ -60,11 +62,11 @@ const CycleDocumentation = ({ validation }) => {
       </div>
 
       <div className="border border-border rounded-lg overflow-hidden">
-        <button
+          <button
           onClick={() => toggleSection('cyclePhases')}
           className="w-full flex items-center justify-between p-4 bg-muted/20 hover:bg-muted/40 transition-colors"
         >
-          <span className="font-medium text-foreground">Cycle Phases</span>
+          <span className="font-medium text-foreground">{t('qualityControl.cyclePhases')}</span>
           <Icon name={expandedSection === 'cyclePhases' ? 'ChevronUp' : 'ChevronDown'} size={16} />
         </button>
         {expandedSection === 'cyclePhases' && (
@@ -93,7 +95,7 @@ const CycleDocumentation = ({ validation }) => {
         <div className="p-4 bg-muted/20">
           <h3 className="font-medium text-foreground flex items-center space-x-2">
             <Icon name="Eye" size={16} />
-            <span>Physical Indicators</span>
+            <span>{t('qualityControl.physicalIndicatorsLabel')}</span>
           </h3>
         </div>
         <div className="p-4">
@@ -120,7 +122,7 @@ const CycleDocumentation = ({ validation }) => {
         <div className="p-4 bg-muted/20">
           <h3 className="font-medium text-foreground flex items-center space-x-2">
             <Icon name="TestTube" size={16} />
-            <span>Chemical Indicators</span>
+            <span>{t('qualityControl.chemicalIndicatorsLabel')}</span>
           </h3>
         </div>
         <div className="p-4">
@@ -149,10 +151,10 @@ const CycleDocumentation = ({ validation }) => {
       {validation?.biologicalIndicator && (
         <div className="border border-border rounded-lg overflow-hidden">
           <div className="p-4 bg-muted/20">
-            <h3 className="font-medium text-foreground flex items-center space-x-2">
-              <Icon name="Microscope" size={16} />
-              <span>Biological Indicators</span>
-            </h3>
+              <h3 className="font-medium text-foreground flex items-center space-x-2">
+                <Icon name="Microscope" size={16} />
+                <span>{t('qualityControl.biologicalIndicatorsLabel')}</span>
+              </h3>
           </div>
           <div className="p-4">
             <div className="bg-muted/30 p-4 rounded-lg">
@@ -185,10 +187,8 @@ const CycleDocumentation = ({ validation }) => {
     <div className="space-y-6">
       <div className="bg-muted/30 p-6 rounded-lg text-center">
         <Icon name="TrendingUp" size={48} className="text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-foreground mb-2">Temperature/Pressure Curves</h3>
-        <p className="text-muted-foreground mb-4">
-          Real-time monitoring data from cycle {validation?.cycleNumber}
-        </p>
+        <h3 className="text-lg font-medium text-foreground mb-2">{t('qualityControl.tempPressureCurves')}</h3>
+        <p className="text-muted-foreground mb-4">{t('qualityControl.tempPressureCurves')} {validation?.cycleNumber}</p>
         <div className="grid grid-cols-2 gap-4 text-sm">
           <div className="text-center">
             <div className="text-2xl font-bold text-success">{validation?.cycleData?.temperature}°C</div>
@@ -219,8 +219,8 @@ const CycleDocumentation = ({ validation }) => {
               <h4 className="font-medium text-foreground mb-1">{evidence?.title}</h4>
               <p className="text-sm text-muted-foreground mb-2">{evidence?.description}</p>
               <div className="flex items-center justify-between text-xs text-muted-foreground">
-                <span>Captured: {new Date(evidence.timestamp)?.toLocaleString()}</span>
-                <span>Inspector: {evidence?.inspectorId}</span>
+                <span>{t('qualityControl.photoCaptured')} {new Date(evidence.timestamp)?.toLocaleString()}</span>
+                <span>{t('qualityControl.photoInspector')} {evidence?.inspectorId}</span>
               </div>
             </div>
           </div>

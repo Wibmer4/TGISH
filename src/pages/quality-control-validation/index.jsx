@@ -7,12 +7,14 @@ import DigitalSignature from './components/DigitalSignature';
 import ValidationStatistics from './components/ValidationStatistics';
 import Icon from '../../components/AppIcon';
 import Button from '../../components/ui/Button';
+import { useTranslation } from '../../utils/translations';
 
 const QualityControlValidation = () => {
   const [selectedValidation, setSelectedValidation] = useState(null);
   const [showSignature, setShowSignature] = useState(false);
   const [activeView, setActiveView] = useState('validation');
   const [pendingValidations, setPendingValidations] = useState([]);
+  const { t } = useTranslation();
 
   // Mock data for pending validations
   useEffect(() => {
@@ -205,8 +207,9 @@ const QualityControlValidation = () => {
   };
 
   const views = [
-  { id: 'validation', label: 'Validation', icon: 'CheckCircle' },
-  { id: 'statistics', label: 'Statistics', icon: 'BarChart3' }];
+    { id: 'validation', label: t('qualityControl.views.validation'), icon: 'CheckCircle' },
+    { id: 'statistics', label: t('qualityControl.views.statistics'), icon: 'BarChart3' }
+  ];
 
 
   return (
@@ -220,10 +223,10 @@ const QualityControlValidation = () => {
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-3xl font-heading font-bold text-foreground">
-                  Quality Control Validation
+                  {t('qualityControl.title')}
                 </h1>
                 <p className="text-muted-foreground mt-2">
-                  Review, approve, and release sterilized loads through comprehensive validation
+                  {t('qualityControl.subtitle')}
                 </p>
               </div>
               
@@ -281,7 +284,7 @@ const QualityControlValidation = () => {
                     URL.revokeObjectURL(url);
                   }}>
 
-                  Generate Report
+                  {t('qualityControl.generateReport')}
                 </Button>
               </div>
             </div>
@@ -322,18 +325,12 @@ const QualityControlValidation = () => {
           <div className="mt-8 bg-card border border-border rounded-lg p-4">
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-6">
-                <div className="flex items-center space-x-2">
-                  <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
-                  <span className="text-sm text-muted-foreground">
-                    Validation System Online
-                  </span>
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  Session: QC-001 (Dr. Sarah Johnson)
-                </div>
-                <div className="text-sm text-muted-foreground">
-                  {pendingValidations?.length} loads pending validation
-                </div>
+                  <div className="flex items-center space-x-2">
+                    <div className="w-3 h-3 bg-success rounded-full animate-pulse"></div>
+                    <span className="text-sm text-muted-foreground">{t('qualityControl.validationSystemOnline')}</span>
+                  </div>
+                  <div className="text-sm text-muted-foreground">{t('login.title')} • QC-001</div>
+                  <div className="text-sm text-muted-foreground">{pendingValidations?.length} {t('qualityControl.validationQueue').toLowerCase()}</div>
               </div>
               
               <div className="flex items-center space-x-4 text-sm text-muted-foreground">

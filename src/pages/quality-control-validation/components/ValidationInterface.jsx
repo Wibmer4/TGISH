@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
+import { useTranslation } from '../../../utils/translations';
 
 
 const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress }) => {
@@ -15,56 +16,26 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
   const [rejectionReason, setRejectionReason] = useState('');
   const [showRejectionForm, setShowRejectionForm] = useState(false);
 
+  const { t } = useTranslation();
+
   if (!validation) {
     return (
       <div className="bg-card border border-border rounded-lg p-8 text-center">
         <Icon name="ClipboardCheck" size={48} className="text-muted-foreground mx-auto mb-4" />
-        <h3 className="text-lg font-medium text-foreground mb-2">No Load Selected</h3>
-        <p className="text-muted-foreground">Select a load to begin validation process</p>
+        <h3 className="text-lg font-medium text-foreground mb-2">{t('ui.noLoadSelected')}</h3>
+        <p className="text-muted-foreground">{t('ui.selectLoad') || t('ui.noLoadSelected')}</p>
       </div>
     );
   }
 
   const inspectionItems = [
-    {
-      id: 'packagingIntegrity',
-      label: 'Packaging Integrity',
-      description: 'Check for tears, punctures, or compromised seals',
-      icon: 'Package'
-    },
-    {
-      id: 'labelQuality',
-      label: 'Label Quality',
-      description: 'Verify barcode readability and print quality',
-      icon: 'Tag'
-    },
-    {
-      id: 'sterileBarrier',
-      label: 'Sterile Barrier Assessment',
-      description: 'Confirm sterile barrier system integrity',
-      icon: 'Shield'
-    },
-    {
-      id: 'visualInspection',
-      label: 'Visual Inspection',
-      description: 'Overall appearance and cleanliness assessment',
-      icon: 'Eye'
-    }
+    { id: 'packagingIntegrity', label: t('qualityControl.inspectionItems.packagingIntegrity.label'), description: t('qualityControl.inspectionItems.packagingIntegrity.description'), icon: 'Package' },
+    { id: 'labelQuality', label: t('qualityControl.inspectionItems.labelQuality.label'), description: t('qualityControl.inspectionItems.labelQuality.description'), icon: 'Tag' },
+    { id: 'sterileBarrier', label: t('qualityControl.inspectionItems.sterileBarrier.label'), description: t('qualityControl.inspectionItems.sterileBarrier.description'), icon: 'Shield' },
+    { id: 'visualInspection', label: t('qualityControl.inspectionItems.visualInspection.label'), description: t('qualityControl.inspectionItems.visualInspection.description'), icon: 'Eye' }
   ];
 
-  const rejectionReasons = [
-    'Packaging integrity compromised',
-    'Label quality insufficient',
-    'Sterile barrier failure',
-    'Indicator failure - Physical',
-    'Indicator failure - Chemical',
-    'Indicator failure - Biological',
-    'Temperature deviation',
-    'Pressure deviation',
-    'Cycle time deviation',
-    'Equipment malfunction',
-    'Other (specify in comments)'
-  ];
+  const rejectionReasons = t('qualityControl.rejectionReasons') || [];
 
   const handleInspectionChange = (itemId, result) => {
     setInspectionResults(prev => ({
@@ -138,15 +109,15 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
         <div className="flex items-center justify-between">
           <div>
             <h2 className="text-xl font-heading font-semibold text-foreground">
-              Quality Control Validation
+              {t('qualityControl.title')}
             </h2>
             <p className="text-sm text-muted-foreground mt-1">
-              Load {validation?.loadId} - Inspector: QC-001
+              {t('ui.sessionLabel')} {validation?.loadId} • QC-001
             </p>
           </div>
           <div className="flex items-center space-x-2">
             <div className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
-              Validation Required
+              {t('qualityControl.validationRequired')}
             </div>
           </div>
         </div>
@@ -155,22 +126,22 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
         <div className="p-6 space-y-6">
           {/* Load Summary */}
           <div className="bg-muted/30 p-4 rounded-lg">
-            <h3 className="font-medium text-foreground mb-3">Load Summary</h3>
+            <h3 className="font-medium text-foreground mb-3">{t('ui.loadSummary')}</h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
               <div>
-                <span className="text-muted-foreground">Autoclave:</span>
+                <span className="text-muted-foreground">{t('qualityControl.loadLabels.autoclave')}</span>
                 <div className="font-medium">{validation?.autoclaveId}</div>
               </div>
               <div>
-                <span className="text-muted-foreground">Cycle:</span>
+                <span className="text-muted-foreground">{t('qualityControl.loadLabels.cycle')}</span>
                 <div className="font-medium">{validation?.cycleNumber}</div>
               </div>
               <div>
-                <span className="text-muted-foreground">Items:</span>
-                <div className="font-medium">{validation?.itemCount} items</div>
+                <span className="text-muted-foreground">{t('qualityControl.loadLabels.items')}</span>
+                <div className="font-medium">{validation?.itemCount}</div>
               </div>
               <div>
-                <span className="text-muted-foreground">Completed:</span>
+                <span className="text-muted-foreground">{t('qualityControl.loadLabels.completed')}</span>
                 <div className="font-medium">
                   {new Date(validation.completedAt)?.toLocaleString()}
                 </div>
@@ -180,7 +151,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
 
           {/* Inspection Checklist */}
           <div>
-            <h3 className="font-medium text-foreground mb-4">Inspection Checklist</h3>
+            <h3 className="font-medium text-foreground mb-4">{t('qualityControl.inspectionChecklist')}</h3>
             <div className="space-y-4">
               {inspectionItems?.map((item) => (
                 <div key={item?.id} className="border border-border rounded-lg p-4">
@@ -199,7 +170,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
                             onChange={() => handleInspectionChange(item?.id, true)}
                             className="w-4 h-4 text-success border-border focus:ring-success"
                           />
-                          <span className="text-sm font-medium text-success">Pass</span>
+                          <span className="text-sm font-medium text-success">{t('ui.pass')}</span>
                         </label>
                         <label className="flex items-center space-x-2 cursor-pointer">
                           <input
@@ -209,7 +180,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
                             onChange={() => handleInspectionChange(item?.id, false)}
                             className="w-4 h-4 text-error border-border focus:ring-error"
                           />
-                          <span className="text-sm font-medium text-error">Fail</span>
+                          <span className="text-sm font-medium text-error">{t('ui.fail')}</span>
                         </label>
                       </div>
                     </div>
@@ -222,12 +193,12 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
           {/* Inspector Comments */}
           <div>
             <Input
-              label="Inspector Comments"
+              label={t('ui.inspectorComments')}
               type="text"
-              placeholder="Enter detailed inspection notes and observations..."
+              placeholder={t('qualityControl.commentsPlaceholder') || ''}
               value={inspectorComments}
               onChange={(e) => setInspectorComments(e?.target?.value)}
-              description="Required: Provide detailed comments about the inspection"
+              description={t('qualityControl.commentsRequired') || ''}
               required
               className="mb-4"
             />
@@ -241,7 +212,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
               iconPosition="left"
               onClick={() => setShowRejectionForm(true)}
             >
-              Reject Load
+              {t('ui.rejectLoad')}
             </Button>
             
             <div className="flex items-center space-x-3">
@@ -251,7 +222,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
                 iconPosition="left"
                 onClick={handleSaveProgress}
               >
-                Save Progress
+                {t('ui.saveProgress')}
               </Button>
               <Button
                 variant="default"
@@ -260,7 +231,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
                 onClick={handleValidate}
                 disabled={!canValidate()}
               >
-                Approve & Release
+                {t('ui.approveAndRelease')}
               </Button>
             </div>
           </div>
@@ -270,11 +241,11 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
         (<div className="p-6 space-y-6">
           <div className="flex items-center space-x-3 text-error">
             <Icon name="AlertTriangle" size={24} />
-            <h3 className="text-lg font-medium">Reject Load</h3>
+            <h3 className="text-lg font-medium">{t('ui.rejectLoad')}</h3>
           </div>
           <div>
             <label className="block text-sm font-medium text-foreground mb-3">
-              Rejection Reason *
+              {t('qualityControl.rejectionReasonLabel') || 'Rejection Reason *'}
             </label>
             <div className="space-y-2">
               {rejectionReasons?.map((reason, index) => (
@@ -293,12 +264,12 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
             </div>
           </div>
           <Input
-            label="Detailed Comments"
+            label={t('ui.inspectorComments')}
             type="text"
-            placeholder="Provide detailed explanation for rejection..."
+            placeholder={t('qualityControl.rejectionPlaceholder') || ''}
             value={inspectorComments}
             onChange={(e) => setInspectorComments(e?.target?.value)}
-            description="Required: Explain the specific issues found"
+            description={t('qualityControl.rejectionDescription') || ''}
             required
           />
           <div className="flex items-center justify-between pt-4 border-t border-border">
@@ -306,7 +277,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
               variant="outline"
               onClick={() => setShowRejectionForm(false)}
             >
-              Cancel
+              {t('common.cancel')}
             </Button>
             
             <Button
@@ -316,7 +287,7 @@ const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress 
               onClick={handleReject}
               disabled={!canReject()}
             >
-              Confirm Rejection
+              {t('ui.confirmRejection')}
             </Button>
           </div>
         </div>)
