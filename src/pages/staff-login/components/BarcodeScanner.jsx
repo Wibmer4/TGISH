@@ -56,11 +56,15 @@ const BarcodeScanner = ({ onScan, isActive, onToggle }) => {
         {/* Scanning Animation */}
         {scanningAnimation && (
           <div className="absolute inset-0">
-            <div className="w-full h-0.5 bg-primary animate-pulse" 
-                 style={{ 
-                   animation: 'scanLine 2s ease-in-out infinite',
-                   transformOrigin: 'top'
-                 }} 
+            <div
+              className="w-full h-0.5 bg-primary"
+              style={{
+                animationName: 'scanLine',
+                animationDuration: '2s',
+                animationTimingFunction: 'ease-in-out',
+                animationIterationCount: 'infinite',
+                transformOrigin: 'top'
+              }}
             />
           </div>
         )}
@@ -111,7 +115,7 @@ const BarcodeScanner = ({ onScan, isActive, onToggle }) => {
         </div>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scanLine {
           0% { transform: translateY(0); opacity: 0; }
           10% { opacity: 1; }

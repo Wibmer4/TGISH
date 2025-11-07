@@ -87,6 +87,31 @@ const PatientTraceabilitySystem = () => {
     }
   };
 
+  const exportData = () => {
+    // simple CSV export of system statistics as an example
+    const headers = ['label','value','change','changeType'];
+    const rows = [headers.join(',')];
+    systemStats?.forEach(s => {
+      rows.push([
+        '"' + String(s.label).replace(/"/g,'""') + '"',
+        '"' + String(s.value).replace(/"/g,'""') + '"',
+        '"' + String(s.change).replace(/"/g,'""') + '"',
+        '"' + String(s.changeType).replace(/"/g,'""') + '"'
+      ].join(','));
+    });
+
+    const csv = rows.join('\n');
+    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    link.setAttribute('download', `patient_traceability_export_${new Date().toISOString().slice(0,10)}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  };
+
   const getStatColor = (color) => {
     switch (color) {
       case 'primary':
@@ -131,6 +156,7 @@ const PatientTraceabilitySystem = () => {
                   variant="outline"
                   iconName="Download"
                   iconPosition="left"
+                  onClick={exportData}
                 >
                   Export Data
                 </Button>

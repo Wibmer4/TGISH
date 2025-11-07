@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 
@@ -45,6 +46,16 @@ const EquipmentStatusCard = ({ equipment }) => {
       return `Due in ${diffDays} days`;
     }
     return maintenanceDate?.toLocaleDateString();
+  };
+
+  const navigate = useNavigate();
+
+  const handleView = () => {
+    navigate(`/equipment-management/${equipment?.id || ''}`, { state: { equipment } });
+  };
+
+  const handleConfigure = () => {
+    navigate(`/equipment-management/${equipment?.id || ''}/configure`, { state: { equipment } });
   };
 
   return (
@@ -107,13 +118,13 @@ const EquipmentStatusCard = ({ equipment }) => {
           variant="ghost"
           size="sm"
           iconName="BarChart3"
-          onClick={() => console.log(`View ${equipment?.name} details`)}
+          onClick={handleView}
         />
         <Button
           variant="ghost"
           size="sm"
           iconName="Settings"
-          onClick={() => console.log(`Configure ${equipment?.name}`)}
+          onClick={handleConfigure}
         />
       </div>
     </div>

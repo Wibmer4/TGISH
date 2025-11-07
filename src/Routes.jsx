@@ -9,6 +9,9 @@ import QualityControlValidation from './pages/quality-control-validation';
 import PreDisinfectionWorkflow from './pages/pre-disinfection-workflow';
 import SterilizationCycleManagement from './pages/sterilization-cycle-management';
 import PatientTraceabilitySystem from './pages/patient-traceability-system';
+import SterileInventoryManagement from './pages/sterile-inventory-management';
+import EquipmentManagement from './pages/equipment-management';
+import ComplianceReporting from './pages/compliance-reporting';
 
 const Routes = () => {
   return (
@@ -23,6 +26,9 @@ const Routes = () => {
         <Route path="/quality-control-validation" element={<QualityControlValidation />} />
         <Route path="/pre-disinfection-workflow" element={<PreDisinfectionWorkflow />} />
         <Route path="/sterilization-cycle-management" element={<SterilizationCycleManagement />} />
+  <Route path="/sterile-inventory-management" element={<SterileInventoryManagement />} />
+  <Route path="/equipment-management" element={<EquipmentManagement />} />
+  <Route path="/compliance-reporting" element={<ComplianceReporting />} />
         <Route path="/patient-traceability-system" element={<PatientTraceabilitySystem />} />
         <Route path="*" element={<NotFound />} />
       </RouterRoutes>

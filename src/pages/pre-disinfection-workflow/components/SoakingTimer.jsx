@@ -4,6 +4,7 @@ import Button from '../../../components/ui/Button';
 
 const SoakingTimer = ({ soakingItems, onTimerComplete, onEmergencyOverride }) => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [selectedItem, setSelectedItem] = useState(null);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -187,7 +188,7 @@ const SoakingTimer = ({ soakingItems, onTimerComplete, onEmergencyOverride }) =>
                       variant="ghost"
                       size="sm"
                       iconName="Eye"
-                      onClick={() => console.log('View details:', item)}
+                      onClick={() => setSelectedItem(item)}
                     >
                       Details
                     </Button>
@@ -228,6 +229,50 @@ const SoakingTimer = ({ soakingItems, onTimerComplete, onEmergencyOverride }) =>
           </div>
         </div>
       </div>
+      {/* Details Modal */}
+      {selectedItem && (
+        <div className="fixed inset-0 z-[1200] flex items-center justify-center bg-black/50">
+          <div className="bg-card rounded-lg w-11/12 max-w-2xl p-6 border border-border">
+            <div className="flex items-start justify-between mb-4">
+              <div>
+                <h3 className="text-lg font-heading font-semibold text-foreground">Soaking Details - {selectedItem?.basketId}</h3>
+                <p className="text-sm text-muted-foreground">Source: {selectedItem?.sourceDepartment} • Operator: {selectedItem?.operatorId}</p>
+              </div>
+              <div>
+                <Button variant="ghost" onClick={() => setSelectedItem(null)} iconName="X" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+              <div>
+                <div className="text-muted-foreground">Started</div>
+                <div className="font-medium">{new Date(selectedItem?.startTime)?.toLocaleString()}</div>
+              </div>
+              <div>
+                <div className="text-muted-foreground">Duration</div>
+                <div className="font-medium">{selectedItem?.soakingDuration} min</div>
+              </div>
+              <div>
+                <div className="text-muted-foreground">Items</div>
+                <div className="font-medium">{selectedItem?.itemCount}</div>
+              </div>
+              <div>
+                <div className="text-muted-foreground">Contamination Level</div>
+                <div className="font-medium capitalize">{selectedItem?.contaminationLevel}</div>
+              </div>
+            </div>
+
+            <div className="mt-4 flex justify-end space-x-2">
+              <Button variant="outline" onClick={() => { setSelectedItem(null); }}>
+                Close
+              </Button>
+              <Button variant="default" onClick={() => { onTimerComplete(selectedItem); setSelectedItem(null); }}>
+                Proceed to Cleaning
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

@@ -250,7 +250,36 @@ const QualityControlValidation = () => {
                 <Button
                   variant="outline"
                   iconName="FileText"
-                  iconPosition="left">
+                  iconPosition="left"
+                  onClick={() => {
+                    // compile pending validations into CSV and download
+                    const rows = [];
+                    const headers = ['id','loadId','autoclaveId','cycleNumber','itemCount','completedAt','operatorId','priority'];
+                    rows.push(headers.join(','));
+                    pendingValidations?.forEach(v => {
+                      rows.push([
+                        v.id,
+                        v.loadId,
+                        v.autoclaveId,
+                        v.cycleNumber,
+                        v.itemCount,
+                        v.completedAt,
+                        v.operatorId,
+                        v.priority
+                      ].map(val => '"' + String(val).replace(/"/g, '""') + '"').join(','));
+                    });
+
+                    const csv = rows.join('\n');
+                    const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+                    const url = URL.createObjectURL(blob);
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.setAttribute('download', `qc_validations_${new Date().toISOString().slice(0,10)}.csv`);
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                  }}>
 
                   Generate Report
                 </Button>

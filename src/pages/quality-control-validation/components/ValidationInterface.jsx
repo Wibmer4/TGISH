@@ -4,7 +4,7 @@ import Button from '../../../components/ui/Button';
 import Input from '../../../components/ui/Input';
 
 
-const ValidationInterface = ({ validation, onValidate, onReject }) => {
+const ValidationInterface = ({ validation, onValidate, onReject, onSaveProgress }) => {
   const [inspectionResults, setInspectionResults] = useState({
     packagingIntegrity: null,
     labelQuality: null,
@@ -91,6 +91,30 @@ const ValidationInterface = ({ validation, onValidate, onReject }) => {
         timestamp: new Date()?.toISOString(),
         inspectorId: 'QC-001'
       });
+    }
+  };
+
+  const handleSaveProgress = () => {
+    const payload = {
+      validationId: validation?.id,
+      inspectionResults,
+      inspectorComments,
+      timestamp: new Date().toISOString()
+    };
+
+    if (typeof onSaveProgress === 'function') {
+      onSaveProgress(payload);
+    } else {
+      // fallback: persist to localStorage as a simulated save
+      try {
+        const key = `validation_progress_${validation?.id}`;
+        localStorage.setItem(key, JSON.stringify(payload));
+        console.log('Validation progress saved to localStorage:', key);
+        alert('Progress enregistré localement.');
+      } catch (err) {
+        console.error('Failed to save progress:', err);
+        alert('Erreur: impossible de sauvegarder la progression.');
+      }
     }
   };
 
@@ -225,6 +249,7 @@ const ValidationInterface = ({ validation, onValidate, onReject }) => {
                 variant="outline"
                 iconName="Save"
                 iconPosition="left"
+                onClick={handleSaveProgress}
               >
                 Save Progress
               </Button>

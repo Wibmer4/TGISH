@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import { useTranslation } from '../../../utils/translations';
@@ -67,6 +68,29 @@ const WorkflowCard = ({ workflow }) => {
     return t(`workflow.priorities.${priority}`, priority?.toUpperCase());
   };
 
+  const navigate = useNavigate();
+
+  const handleView = () => {
+    // route user depending on current stage for quick access
+    switch (workflow?.currentStage) {
+      case 'pre-disinfection':
+        return navigate('/pre-disinfection-workflow');
+      case 'sterilization':
+      case 'validation':
+        return navigate('/sterilization-cycle-management');
+      case 'packaging':
+      case 'cleaning':
+        return navigate('/sterile-inventory-management');
+      default:
+        return navigate('/cssd-dashboard');
+    }
+  };
+
+  const handleContinue = () => {
+    // navigate to a workflow detail page if available
+    navigate(`/workflow/${workflow?.id || ''}`, { state: { workflow } });
+  };
+
   return (
     <div className="bg-card border border-border rounded-lg p-6 hover:shadow-md transition-shadow duration-200">
       <div className="flex items-start justify-between mb-4">
@@ -119,7 +143,7 @@ const WorkflowCard = ({ workflow }) => {
             size="sm"
             iconName="Eye"
             iconPosition="left"
-            onClick={() => console.log(`View details for ${workflow?.id}`)}
+            onClick={handleView}
           >
             {t('common.view')}
           </Button>
@@ -128,7 +152,7 @@ const WorkflowCard = ({ workflow }) => {
             size="sm"
             iconName="Play"
             iconPosition="left"
-            onClick={() => console.log(`Continue workflow ${workflow?.id}`)}
+            onClick={handleContinue}
           >
             {t('common.continue')}
           </Button>

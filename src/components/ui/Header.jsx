@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Icon from '../AppIcon';
 import Button from './Button';
 import { useTranslation } from '../../utils/translations';
@@ -7,6 +7,16 @@ const Header = ({ className = '' }) => {
   const { t } = useTranslation();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const [theme, setTheme] = useState(() => {
+    try {
+      const stored = localStorage.getItem('cssd_theme');
+      if (stored) return stored;
+      if (typeof window !== 'undefined' && window.matchMedia?.('(prefers-color-scheme: dark)')?.matches) return 'dark';
+    } catch (e) {
+      // ignore
+    }
+    return 'light';
+  });
 
   const primaryNavItems = [
     { 
@@ -49,6 +59,22 @@ const Header = ({ className = '' }) => {
     setIsMenuOpen(false);
     setShowMoreMenu(false);
   };
+
+  useEffect(() => {
+    try {
+      if (theme === 'dark') {
+        document.documentElement.classList.add('dark');
+        localStorage.setItem('cssd_theme', 'dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+        localStorage.setItem('cssd_theme', 'light');
+      }
+    } catch (e) {
+      // ignore
+    }
+  }, [theme]);
+
+  const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'));
 
   const currentPath = window.location?.pathname;
 
@@ -147,6 +173,16 @@ const Header = ({ className = '' }) => {
             >
               {t('common.scan')}
             </Button>
+            {/* Theme Toggle */}
+            <Button
+              variant="ghost"
+              size="sm"
+              iconName={theme === 'dark' ? 'Sun' : 'Moon'}
+              onClick={toggleTheme}
+              aria-pressed={theme === 'dark'}
+              aria-label={theme === 'dark' ? 'Basculer en mode clair' : 'Basculer en mode sombre'}
+              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            />
           </div>
 
           {/* User Menu */}

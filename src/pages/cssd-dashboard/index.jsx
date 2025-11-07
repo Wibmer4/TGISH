@@ -11,7 +11,7 @@ import Button from '../../components/ui/Button';
 import { useTranslation } from '../../utils/translations';
 
 const CSSDDashboard = () => {
-  const { t } = useTranslation();
+  const { t, currentLanguage } = useTranslation();
   const [alerts, setAlerts] = useState([]);
   const [currentTime, setCurrentTime] = useState(new Date());
 
@@ -284,7 +284,7 @@ const CSSDDashboard = () => {
       }
     ];
     setAlerts(initialAlerts);
-  }, [t]);
+  }, [currentLanguage]);
 
   // Update current time every minute
   useEffect(() => {
