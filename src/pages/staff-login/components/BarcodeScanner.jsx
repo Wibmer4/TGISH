@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Icon from '../../../components/AppIcon';
 import Button from '../../../components/ui/Button';
 import { useTranslation } from '../../../utils/translations';
-//b//
+
 const BarcodeScanner = ({ onScan, isActive, onToggle }) => {
   const { t } = useTranslation();
   const [scanningAnimation, setScanningAnimation] = useState(false);
