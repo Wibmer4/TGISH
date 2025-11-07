@@ -246,7 +246,7 @@ export const frTranslations = {
   // Hospital/Compliance
   compliance: {
     hospitalName: 'Hôpital Central Universitaire',
-    location: 'Paris, France',
+    location: 'Oujda, Maroc',
     sterilizationDept: 'Département de Stérilisation Centrale',
     certifiedFacility: 'Installation Certifiée',
     iso13485: 'ISO 13485:2016',
