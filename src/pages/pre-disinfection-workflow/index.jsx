@@ -187,7 +187,7 @@ const PreDisinfectionWorkflow = () => {
                     Protocole de Pré-Désinfection
                   </h1>
                   <p className="text-muted-foreground mt-1">
-                    Contaminated basket registration and soaking time management
+                    Gestion de l'enregistrement des paniers contaminés et du temps de trempage
                   </p>
                 </div>
               </div>

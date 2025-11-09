@@ -9,7 +9,7 @@ const Header = ({ className = '' }) => {
   return (
     <header className={`fixed top-0 left-0 right-0 z-[1000] bg-card border-b border-border shadow-clinical ${className}`}>
       <div className="flex items-center justify-between h-16 px-4">
-        {/* Scanner (left) */}
+         {/* Scanner (left) */}
         <div>
           <Button
             variant="outline"
@@ -26,6 +26,7 @@ const Header = ({ className = '' }) => {
             <Icon name="Scan" size={18} />
           </Button>
         </div>
+        
 
         {/* Dashboard (right) */}
         <div>
