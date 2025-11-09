@@ -53,7 +53,7 @@ const SoakingTimer = ({ soakingItems, onTimerComplete, onEmergencyOverride }) =>
         <div className="text-center py-8">
           <Icon name="Timer" size={48} className="text-muted-foreground mx-auto mb-4" />
           <h3 className="text-lg font-heading font-semibold text-foreground mb-2">
-            No Active Soaking Timers
+            No Chronomètres de Pré-Désinfection Actifs
           </h3>
           <p className="text-muted-foreground">
             Register contaminated items to start soaking timers
@@ -72,7 +72,7 @@ const SoakingTimer = ({ soakingItems, onTimerComplete, onEmergencyOverride }) =>
           </div>
           <div>
             <h3 className="text-lg font-heading font-semibold text-foreground">
-              Active Soaking Timers
+              Chronomètres de Pré-Désinfection Actifs
             </h3>
             <p className="text-sm text-muted-foreground">
               {soakingItems?.length} item{soakingItems?.length !== 1 ? 's' : ''} currently soaking

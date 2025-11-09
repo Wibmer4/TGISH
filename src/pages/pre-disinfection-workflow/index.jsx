@@ -184,7 +184,7 @@ const PreDisinfectionWorkflow = () => {
                 </div>
                 <div>
                   <h1 className="text-3xl font-heading font-bold text-foreground">
-                    Pre-Disinfection Workflow
+                    Protocole de Pré-Désinfection
                   </h1>
                   <p className="text-muted-foreground mt-1">
                     Contaminated basket registration and soaking time management
@@ -233,7 +233,7 @@ const PreDisinfectionWorkflow = () => {
             <div className="bg-card border border-border rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Currently Soaking</p>
+                  <p className="text-sm font-medium text-muted-foreground">Actuellement en Trempage</p>
                   <p className="text-2xl font-bold text-warning">{workflowStats?.currentSoaking}</p>
                 </div>
                 <div className="w-10 h-10 bg-warning/10 rounded-lg flex items-center justify-center">

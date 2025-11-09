@@ -130,28 +130,28 @@ const CycleControlPanel = ({ onStartCycle, canStartCycle, activeCycle }) => {
             </div>
           </div>
 
-          {/* Pre-cycle Checklist */}
+          {/* Liste de vérification avant cycle */}
           <div className="bg-accent/5 border border-accent/20 rounded-lg p-4">
             <h4 className="font-medium text-foreground mb-3 flex items-center space-x-2">
               <Icon name="CheckSquare" size={16} />
-              <span>Pre-Cycle Checklist</span>
+              <span>Liste de vérification avant cycle</span>
             </h4>
             <div className="space-y-2 text-sm">
               <div className="flex items-center space-x-2 text-success">
                 <Icon name="Check" size={14} />
-                <span>All items validated for prerequisites</span>
+                <span>Tous les articles validés quant aux prérequis</span>
               </div>
               <div className="flex items-center space-x-2 text-success">
                 <Icon name="Check" size={14} />
-                <span>Autoclave chamber door sealed</span>
+                <span>porte de la chambre de l'autoclave scellée</span>
               </div>
               <div className="flex items-center space-x-2 text-success">
                 <Icon name="Check" size={14} />
-                <span>Steam supply pressure adequate</span>
+                <span>Pression d'alimentation en vapeur adéquate</span>
               </div>
               <div className="flex items-center space-x-2 text-success">
                 <Icon name="Check" size={14} />
-                <span>Chemical indicators placed</span>
+                <span>Des indicateurs chimiques ont été placés</span>
               </div>
             </div>
           </div>

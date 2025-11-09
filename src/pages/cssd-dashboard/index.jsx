@@ -316,7 +316,7 @@ const CSSDDashboard = () => {
                 {t('dashboard.title')}
               </h1>
               <p className="text-muted-foreground">
-                {t('dashboard.subtitle')}
+                {t('tableau de bord.sous-titre')}
               </p>
             </div>
             
@@ -327,7 +327,7 @@ const CSSDDashboard = () => {
               </div>
               <div className="flex items-center space-x-2 text-sm text-success">
                 <div className="w-2 h-2 bg-success rounded-full animate-pulse"></div>
-                <span>{t('dashboard.liveUpdates')}</span>
+                <span>{t('Mises à jour du tableau de bord en direct')}</span>
               </div>
               <Button
                 variant="outline"
@@ -349,7 +349,7 @@ const CSSDDashboard = () => {
           {alerts?.length > 0 && (
             <div className="mb-8">
               <h2 className="text-xl font-heading font-semibold text-foreground mb-4">
-                {t('dashboard.activeAlerts')}
+                {t('tableau de bord alertes actives')}
               </h2>
               <div className="space-y-3">
                 {alerts?.map((alert) => (
@@ -366,7 +366,7 @@ const CSSDDashboard = () => {
           {/* Quick Actions */}
           <div className="mb-8">
             <h2 className="text-xl font-heading font-semibold text-foreground mb-4">
-              {t('dashboard.quickActions.title')}
+              {t('tableau de bord actions rapides')}
             </h2>
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
               {quickActions?.map((action) => (
@@ -384,7 +384,7 @@ const CSSDDashboard = () => {
             <div className="xl:col-span-2">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-heading font-semibold text-foreground">
-                  {t('dashboard.activeWorkflows')}
+                  {t('tableau de bord flux de travail actifs')}
                 </h2>
                 <Button
                   variant="outline"
@@ -409,7 +409,7 @@ const CSSDDashboard = () => {
               {/* Equipment Status */}
               <div>
                 <h2 className="text-xl font-heading font-semibold text-foreground mb-4">
-                  {t('dashboard.equipmentStatus')}
+                  {t('tableau de bord état de équipement')}
                 </h2>
                 <div className="space-y-4">
                   {equipmentStatus?.map((equipment) => (
@@ -422,7 +422,7 @@ const CSSDDashboard = () => {
               <div>
                 <div className="flex items-center justify-between mb-4">
                   <h2 className="text-xl font-heading font-semibold text-foreground">
-                    {t('dashboard.validationQueue')}
+                    {t('tableau de bord file de validation')}
                   </h2>
                   <Button
                     variant="ghost"
@@ -444,7 +444,7 @@ const CSSDDashboard = () => {
           {/* Navigation Links */}
           <div className="mt-12 pt-8 border-t border-border">
             <h3 className="text-lg font-heading font-semibold text-foreground mb-4">
-              {t('dashboard.processNavigation')}
+              {t('tableau de bord process Navigation')}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               <Button

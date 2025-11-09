@@ -59,7 +59,7 @@ export const frTranslations = {
 
   // Dashboard Page
   dashboard: {
-    title: 'Tableau de bord CSSD',
+    title: 'Tableau de bord SteriliTrack',
     quickActions: {
       title: 'Actions Rapides',
       subtitle: 'Département Central de Stérilisation - Surveillance des processus en temps réel',

@@ -131,7 +131,7 @@ const SoakingDataTable = ({ soakingItems, onItemAction, onBulkAction }) => {
             </div>
             <div>
               <h3 className="text-lg font-heading font-semibold text-foreground">
-                Soaking Data Table
+                Tableau des Données de Trempage
               </h3>
               <p className="text-sm text-muted-foreground">
                 {filteredAndSortedItems?.length} of {soakingItems?.length} items

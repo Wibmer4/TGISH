@@ -217,10 +217,10 @@ const SterilizationCycleManagement = () => {
           {/* Page Header */}
           <div className="text-center">
             <h1 className="text-3xl font-bold text-foreground mb-2">
-              Sterilization Cycle Management
+              Gestion du Cycle de Stérilisation
             </h1>
             <p className="text-muted-foreground max-w-2xl mx-auto">
-              Control autoclave loading, cycle execution, and validation processes with comprehensive traceability logging for regulatory compliance.
+              Assurer le contrôle du chargement, de l'exécution du cycle et des processus de validation de l'autoclave, avec un enregistrement complet de la traçabilité pour la conformité réglementaire.
             </p>
           </div>
 
