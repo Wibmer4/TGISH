@@ -226,7 +226,7 @@ const PreDisinfectionWorkflow = () => {
                 </div>
               </div>
               <div className="mt-2 text-xs text-success">
-                +12 from yesterday
+                +12 à partir d'hier
               </div>
             </div>
 
@@ -241,14 +241,14 @@ const PreDisinfectionWorkflow = () => {
                 </div>
               </div>
               <div className="mt-2 text-xs text-muted-foreground">
-                Active timers running
+                Minuteurs actifs en cours
               </div>
             </div>
 
             <div className="bg-card border border-border rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Ready for Cleaning</p>
+                  <p className="text-sm font-medium text-muted-foreground">Prêt pour le nettoyage</p>
                   <p className="text-2xl font-bold text-success">{workflowStats?.readyForCleaning}</p>
                 </div>
                 <div className="w-10 h-10 bg-success/10 rounded-lg flex items-center justify-center">
@@ -256,14 +256,14 @@ const PreDisinfectionWorkflow = () => {
                 </div>
               </div>
               <div className="mt-2 text-xs text-success">
-                Soaking complete
+                Trempage terminé
               </div>
             </div>
 
             <div className="bg-card border border-border rounded-lg p-6">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-muted-foreground">Avg. Soak Time</p>
+                  <p className="text-sm font-medium text-muted-foreground">Durée moyenne de trempage</p>
                   <p className="text-2xl font-bold text-foreground">{workflowStats?.averageSoakTime}m</p>
                 </div>
                 <div className="w-10 h-10 bg-accent/10 rounded-lg flex items-center justify-center">
@@ -271,7 +271,7 @@ const PreDisinfectionWorkflow = () => {
                 </div>
               </div>
               <div className="mt-2 text-xs text-muted-foreground">
-                Per contamination level
+                Par niveau de contamination
               </div>
             </div>
           </div>

@@ -57,10 +57,10 @@ const BarcodeScanner = ({ onScanSuccess, isActive, onToggleScanner }) => {
           </div>
           <div>
             <h3 className="text-lg font-heading font-semibold text-foreground">
-              Barcode Scanner
+              lecteur de codes-barres
             </h3>
             <p className="text-sm text-muted-foreground">
-              Scan contaminated baskets and instrument trays
+              Scanner les paniers et les plateaux d'instruments contaminés
             </p>
           </div>
         </div>
@@ -166,7 +166,7 @@ const BarcodeScanner = ({ onScanSuccess, isActive, onToggleScanner }) => {
         <div className="text-center py-8">
           <Icon name="ScanLine" size={48} className="text-muted-foreground mx-auto mb-4" />
           <p className="text-muted-foreground">
-            Activate scanner to begin barcode registration
+            Activez le scanner pour commencer l'enregistrement des codes-barres
           </p>
         </div>
       )}
