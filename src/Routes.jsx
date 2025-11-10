@@ -34,9 +34,10 @@ const Routes = () => {
           <Route path="/equipment-management" element={<EquipmentManagement />} />
           <Route path="/compliance-reporting" element={<ComplianceReporting />} />
           <Route path="/patient-traceability-system" element={<PatientTraceabilitySystem />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
 
-        <Route path="*" element={<NotFound />} />
+           <Route path="*" element={<NotFound />} />
       </RouterRoutes>
       </ErrorBoundary>
     </BrowserRouter>
